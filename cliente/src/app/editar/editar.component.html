@@ -1,0 +1,55 @@
+<div class="row">
+  <div class="col-md-4 col-md-offset-4">
+    <div class="form" [formGroup]="formulario">
+      <div class="form-group">
+        <label for="nombre">Nombre
+          <div *ngIf="formulario.controls['_nombre'].errors  && !formulario.pristine">
+            <span *ngIf="formulario.controls['_nombre'].errors.required" class="label label-danger">El campo nombre es necesario!!!</span>
+            <span *ngIf="formulario.controls['_nombre'].errors.minlength" class="label label-danger">Minimo 6 caracteres!!!</span>
+          </div>
+        </label>
+        <input formControlName="_nombre" class="form-control" type="text" name="nombre">
+      </div>
+      <div class="form-group">
+        <label for="ape_paterno">Apellido paterno
+            <div *ngIf="formulario.controls['_ape_paterno'].errors  && !formulario.pristine">
+                <span *ngIf="formulario.controls['_ape_paterno'].errors.required" class="label label-danger">El campo apellido es necesario!!!</span>
+                <span *ngIf="formulario.controls['_ape_paterno'].errors.minlength" class="label label-danger">Minimo 6 caracteres!!!</span>
+              </div>
+        </label>
+        <input formControlName="_ape_paterno" class="form-control" type="text" name="ape_paterno">
+      </div>
+      <div class="form-group">
+        <label for="ape_materno">Apellido materno
+            <div *ngIf="formulario.controls['_ape_materno'].errors  && !formulario.pristine">
+                <span *ngIf="formulario.controls['_ape_materno'].errors.required" class="label label-danger">El campo apellido es necesario!!!</span>
+                <span *ngIf="formulario.controls['_ape_materno'].errors.minlength" class="label label-danger">Minimo 6 caracteres!!!</span>
+              </div>
+        </label>
+        <input formControlName="_ape_materno" class="form-control" type="text" name="ape_materno">
+      </div>
+      <div class="form-group">
+        <label for="edad">Edad
+            <div *ngIf="formulario.controls['_edad'].errors  && !formulario.pristine">
+                <span *ngIf="formulario.controls['_edad'].errors.required" class="label label-danger">El campo edad es necesario!!!</span>
+                <span *ngIf="formulario.controls['_edad'].errors.pattern" class="label label-danger">Solo números!!!</span>
+              </div>
+        </label>
+        <input formControlName="_edad" class="form-control" type="text" name="edad" (keypress)="_keyPress($event)">
+      </div>
+      <div class="form-group">
+        <label for="correo">Correo
+            <div *ngIf="formulario.controls['_correo'].errors  && !formulario.pristine">
+                <span *ngIf="formulario.controls['_correo'].errors.required" class="label label-danger">El campo email es necesario!!!</span>
+                <span *ngIf="formulario.controls['_correo'].errors.email" class="label label-danger">Por favor ingrese un email correcto!!!</span>
+              </div>
+        </label>
+        <input formControlName="_correo" class="form-control" type="text" name="correo">
+      </div>
+      <div class="form-group">
+        <button [disabled]="formulario.invalid" class="btn btn-warning" (click)="DatosPaEditar ? editarPersona() : crearPersona()">{{DatosPaEditar ? 'Editar' : 'Crear'}}</button>
+        <button class="btn btn-default" (click)="back()">Regresar</button>
+      </div>
+    </div>
+  </div>
+</div>

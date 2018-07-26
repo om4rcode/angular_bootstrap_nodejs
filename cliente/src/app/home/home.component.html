@@ -1,0 +1,16 @@
+<div *ngIf="listar" class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <button  class="btn btn-primary" (click)= "crearUsuario()" >Crear</button>
+
+  </div>
+</div>
+
+<listar-usuario *ngIf="listar" [listadoPersonas]="personas"   (editarPersona) = "getPersonaEdit($event)"  (eliminarPersona)="deletePersona($event)"></listar-usuario>
+
+<crear-editar-usuario *ngIf="create_update" (Salir)="back($event)" [DatosPaEditar]="datos" (DatosEditados) = "dataEditada($event)"  ></crear-editar-usuario>
+
+<eliminar-usuario (estado)="proceder($event)" *ngIf="eliminar" [mensajeP] = "getmensaje"></eliminar-usuario>
+
+<div>
+    <p>{{ mensaje }}</p>
+</div>

@@ -1,0 +1,28 @@
+<table class="table" border="1">
+  <thead>
+    <th>Id</th>
+    <th>Nombre</th>
+    <th>Apellido paterno</th>
+    <th>Apellido materno</th>
+    <th>Edad</th>
+    <th>Correo</th>
+    <th>Acciones</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let per of listadoPersonas; let i = index;"> 
+      <td>{{per.id_persona}}</td>
+      <td>{{per.nom_persona}}</td>
+      <td>{{per.ape_paterno}}</td>
+      <td>{{per.ape_materno}}</td>
+      <td>{{per.edad}}</td>
+      <td>{{per.correo}}</td>
+      <td>
+        <button class="btn btn-warning" (click)="editar(i)">Editar</button>
+        <button class="btn btn-danger" (click)="eliminar(i, per.id_persona)" >Eliminar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
